@@ -1,13 +1,43 @@
-import React from 'react';
-import {Route, Redirect} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import {Route, Redirect, useHistory} from 'react-router-dom';
+import axios from 'axios';
 import MasterLayout from './layouts/admin/MasterLayout';
+import swal from 'sweetalert';
 
  function AdminPrivateRoute ({...rest}) {
-   
+   const history = useHistory();
+   const [Authonticated, setAuthonticated] = useState(false)
+   const [loading, setloading] = useState(true)
+   useEffect(() => {
+      axios.get(`/api/checkingAuthonticated`).then(res => {
+         if(res.status === 200){
+            setAuthonticated (true)  
+                }
+         setloading(false)
+        
+      })
+      return () => {
+         setAuthonticated (false)
+
+      }
+   }, [])
+
+   axios.interceptors.response.use(undefined, function axiosRetryInterceptor(err){
+      if(err.response.status === 401){
+         swal('Unauthorized', err.response.data.message,'warning');
+         history.push('/');
+      }
+      return Promise.reject(err);
+
+   })
+
+   if(loading){
+      return <h3>Loading.....</h3>
+   }
         return (
            <Route {...rest} 
            render={ ({props, location}) => 
-           localStorage.getItem('auth_token') ?
+             Authonticated ?
            ( <MasterLayout {...props} /> ):
            (<Redirect to={{pathname: "/login", state: {from: location} }} />)
         }
