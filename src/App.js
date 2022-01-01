@@ -5,6 +5,8 @@ import AdminPrivateRoute from './AdminPrivateRoute'
 import Home from './component/frontend/Home';
 import Register from './component/frontend/auth/Register';
 import Login from './component/frontend/auth/Login';
+import Page403 from './assets/errors/Page403';
+import Page404 from './assets/errors/Page404';
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -22,6 +24,8 @@ function App() {
       <Router>
       <Switch>
         <Route exact path="/" component= {Home} />
+        <Route path="/403" component= {Page403} />
+        <Route path="/404" component= {Page404} />
 
         {/* <Route path="/register" component= {Register} />
 
