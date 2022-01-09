@@ -20,7 +20,13 @@ if(loading){
 }
 else{
 display_productData = productList.map((item) => {
-
+    var productStatus = '';
+if(item.status == 0){
+productStatus = 'Show'
+}
+else if(item.status == 1){
+productStatus = "Hidden"
+}
     return(
         <tr key={item.id}>
                 <td>{item.id}</td>
@@ -32,7 +38,7 @@ display_productData = productList.map((item) => {
                     <Link to={`/admin/edit-product/${item.id}`} className='btn btn-success btn-sm'>Edit</Link>
                     </td>
                     <td>
-                    <Link to={'/'} className='btn btn-danger btn-sm'>Delete</Link>
+                    {productStatus}
                     </td>
             
             </tr>

@@ -35,6 +35,11 @@ function EditProduct (props){
   const handlePicture = (e) => {
     setPicture({image:e.target.files[0]})
   }
+const handleCheckbox = (e) => {
+  e.persist();
+  setCheckboxes({...allcheckbox,[e.target.name]:e.target.checked})
+}
+  const [allcheckbox, setCheckboxes] = useState([])
 
   useEffect(() => {
     axios.get(`/api/all-category`).then(res=>{
@@ -46,6 +51,8 @@ function EditProduct (props){
     axios.get(`/api/edit-product/${product_id}`).then(res=>{
         if(res.data.status === 200){
           setProduct(res.data.products);
+          setCheckboxes(res.data.products);
+
         //   console.log(res.data.products)
         setLoading(false)
         }
@@ -77,9 +84,9 @@ function EditProduct (props){
     formData.append('original_price',productInput.original_price)
     formData.append('qty',productInput.qty)
     formData.append('brand',productInput.brand)
-    formData.append('featured',productInput.featured)
-    formData.append('papular',productInput.papular)
-    formData.append('status',productInput.status)
+    formData.append('featured',allcheckbox.featured ? '1' : '0')
+    formData.append('papular',allcheckbox.papular ? '1' : '0')
+    formData.append('status',allcheckbox.status ? '1' : '0')
     axios.post(`/api/update-product/${product_id}`,formData).then(res => {
       if(res.data.status === 200){
         swal('Success',res.data.message,'success')
@@ -213,15 +220,15 @@ function EditProduct (props){
             
             <div className="col-md-4 form-group mb-3">
               <label>Featurd(checked=show)</label>
-              <input type="checkbox" name="featured" className="w-50 h-30" onChange={handleInput} value={productInput.featured} />
+              <input type="checkbox" name="featured" className="w-50 h-30" onChange={handleCheckbox} defaultChecked={allcheckbox.featured === 1 ? true:false} />
             </div>
             <div className="col-md-4 form-group mb-3">
               <label>Papular(checked=show)</label>
-              <input type="checkbox" name="papular" className="w-50 h-30" onChange={handleInput} value={productInput.papular} />
+              <input type="checkbox" name="papular" className="w-50 h-30" onChange={handleCheckbox} defaultChecked={allcheckbox.papular === 1 ? true:false} />
             </div>
             <div className="col-md-4 form-group mb-3">
               <label>Status(checked=hidden)</label>
-              <input type="checkbox" name="status" className="w-50 h-30" onChange={handleInput} value={productInput.status} />
+              <input type="checkbox" name="status" className="w-50 h-30" onChange={handleCheckbox} defaultChecked={allcheckbox.status === 1 ? true:false} />
             </div>
            
           </div>

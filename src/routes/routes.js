@@ -5,9 +5,7 @@ import ViewCategory from '../component/admin/category/ViewCategory';
 import EditCategory from '../component/admin/category/EditCategory';
 import Product from '../component/admin/Products/Product';
 import ViewProduct from '../component/admin/Products/ViewProduct';
-import EditProduct from '../components/admin/Products/EditProduct';
-
-
+import EditProduct from '../component/admin/Products/EditProduct';
 const routes = [
     { path : '/admin', exact : true, name : 'Admin'},
     { path : '/admin/dashboard', exact : true, name : 'Dashboard', component : Dashboard},
