@@ -7,7 +7,7 @@ const history = useHistory();
   const btnSubmit = (e) => {
     e.preventDefault();
     // alert('You Clicked Me');
-    axios.post(`api/logout`).then(res => {
+    axios.get(`api/logout`).then(res => {
       if(res.data.status === 200){
       localStorage.removeItem('auth_token');
       localStorage.removeItem('auth_name');

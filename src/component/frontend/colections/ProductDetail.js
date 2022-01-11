@@ -31,10 +31,9 @@ const ProductDetail = (props) => {
                 product_id : product.id,
                 product_qty : quantity,
             }
-            axios.get(`/api/add-to-cart`,data).then(res =>{
+            axios.post(`/api/add-to-cart`,data).then(res =>{
                 if(res.data.status === 201){
                 swal("Success",res.data.message,"success")
-                   
                }
                else if(res.data.status === 409){
                 swal("Warning",res.data.message,"warning")

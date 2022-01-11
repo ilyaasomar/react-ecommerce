@@ -2,8 +2,6 @@ import React from 'react';
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 // import MasterLayout from "./layouts/admin/MasterLayout";
 import AdminPrivateRoute from './AdminPrivateRoute'
-import Register from './component/frontend/auth/Register';
-import Login from './component/frontend/auth/Login';
 import PublicRoute from './PublicRoute';
 import Page403 from './assets/errors/Page403';
 import Page404 from './assets/errors/Page404';
@@ -28,12 +26,12 @@ function App() {
         <PublicRoute path="/" name="Home" /> 
         <Route path="/403" component= {Page403} />
         <Route path="/404" component= {Page404} />
-        <Route path="/login">
+        {/* <Route path="/login">
           {localStorage.getItem('auth_token') ? <Redirect to = '/' /> : <Login />}
         </Route>
         <Route path="/register">
           {localStorage.getItem('auth_token') ? <Redirect to = '/' /> : < Register/>}
-        </Route>
+        </Route> */}
   </Switch>
     </Router>
     </div>
