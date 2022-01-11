@@ -16,8 +16,6 @@ const ViewProduct = (props) => {
         axios.get(`/api/fetchproducts/${product_slug}`).then(res =>{
             if(isMounted){
                 if(res.data.status === 200){
-                    console.log(res.data.product_data.product)
-                    // console.log(res.data.product_data.category)
                     setProduct(res.data.product_data.product)
                     setCategory(res.data.product_data.category)
                         setLoading(false)
@@ -49,11 +47,11 @@ const ViewProduct = (props) => {
             return(
                 <div className='col-md-4' key={idx}>
                 <div className='card'>
-                    <Link to="">
+                    <Link to={`/collections/${item.category.slug}/${item.slug}`}>
                         <img src={`http://127.0.0.1:8000/${item.image}`} className='w-50' alt={item.name} />
                         </Link>
                 <div className='card-body'>
-                    <Link to=''>
+                <Link to={`/collections/${item.category.slug}/${item.slug}`}>
                         <h5>{item.name}</h5>
                         </Link>
                 </div>

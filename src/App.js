@@ -28,15 +28,12 @@ function App() {
         <PublicRoute path="/" name="Home" /> 
         <Route path="/403" component= {Page403} />
         <Route path="/404" component= {Page404} />
-
         <Route path="/login">
           {localStorage.getItem('auth_token') ? <Redirect to = '/' /> : <Login />}
         </Route>
         <Route path="/register">
           {localStorage.getItem('auth_token') ? <Redirect to = '/' /> : < Register/>}
         </Route>
-
-        {/* <Route path="/admin" name = "Admin" render = {(props) => < MasterLayout {...props} />} /> */}
   </Switch>
     </Router>
     </div>
