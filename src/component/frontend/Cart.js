@@ -155,7 +155,7 @@ const Cart = () => {
                             <span className='float-end'>${totalCartPrice}</span>
                         </h4>
                         <hr />
-                        <Link to='' className='btn btn-primary'>Checkout</Link>
+                        <Link to='/checkout' className='btn btn-primary'>Checkout</Link>
                     </div>
                 </div>
 

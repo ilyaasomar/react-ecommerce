@@ -7,6 +7,8 @@ import ViewCategory from '../component/frontend/colections/ViewCategory';
 import ViewProduct from '../component/frontend/colections/ViewProduct';
 import ProductDetail from '../component/frontend/colections/ProductDetail';
 import Cart from '../component/frontend/Cart';
+import Checkout from '../component/frontend/Checkout';
+
 
 
 
@@ -20,6 +22,7 @@ const PublicRoutesList = [
     { path : '/collections/:slug', exact : true, name : 'ViewProduct', component : ViewProduct},
     { path : '/collections/:category/:product', exact : true, name : 'ProductDetail', component : ProductDetail},
     { path : '/cart', exact : true, name : 'Cart', component : Cart},
+    { path : '/checkout', exact : true, name : 'Checkout', component : Checkout},
 
 
 ];

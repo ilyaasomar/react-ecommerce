@@ -64,6 +64,9 @@ const history = useHistory();
       <li className="nav-item">
         <Link className="nav-link" to="/cart">Cart</Link>
       </li>
+      <li className="nav-item">
+        <Link className="nav-link" to=""></Link>
+      </li>
       {AuthButtons}
     </ul>
   </div>
