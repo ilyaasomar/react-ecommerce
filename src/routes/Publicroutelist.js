@@ -6,6 +6,7 @@ import Register from '../component/frontend/auth/Register';
 import ViewCategory from '../component/frontend/colections/ViewCategory';
 import ViewProduct from '../component/frontend/colections/ViewProduct';
 import ProductDetail from '../component/frontend/colections/ProductDetail';
+import Cart from '../component/frontend/Cart';
 
 
 
@@ -18,6 +19,7 @@ const PublicRoutesList = [
     { path : '/collections', exact : true, name : 'ViewCategory', component : ViewCategory},
     { path : '/collections/:slug', exact : true, name : 'ViewProduct', component : ViewProduct},
     { path : '/collections/:category/:product', exact : true, name : 'ProductDetail', component : ProductDetail},
+    { path : '/cart', exact : true, name : 'Cart', component : Cart},
 
 
 ];
